@@ -1,5 +1,6 @@
 ﻿using SQL_Lesson_6__EF_Core___SQLite_.Contexts;
 using SQL_Lesson_6__EF_Core___SQLite_.Models;
+using SQL_Lesson_6__EF_Core___SQLite_.Repositories;
 
 public class Program
 {
@@ -7,24 +8,26 @@ public class Program
     {
         using (var context = new ExpensesTrackerContext()) 
         {
-            //context.Categories.Add(new Category { Name = "Food" });
-            //context.Categories.Add(new Category { Name = "Transportation" });
+            var repo = new ExpenseRepository(context);
+            var categories = repo.GetAllCategories();
 
-            context.SaveChanges();
-
-            context.Expenses.Add(new Expense
+            repo.AddExpense(new Expense
             {
                 Date = DateTime.Now,
-                Amount = 120m,
-                Description = "Breakfast",
-                Category = context.Categories.FirstOrDefault()
+                Amount = 100,
+                Description = "Lunch",
+                Category = categories.FirstOrDefault()
             });
 
-            context.SaveChanges();
+            repo.AddExpense(new Expense
+            {
+                Date = DateTime.Now,
+                Amount = 200,
+                Description = "Taxi",
+                Category = categories.Skip(1).FirstOrDefault()
+            });
 
-            //Rertive and display all expenses
-            var expenses = context.Expenses.ToList();
-            foreach (var expense in expenses) 
+            foreach(var expense in repo.GetAllExpenses())
             {
                 Console.WriteLine($"Date: {expense.Date}, Amount: {expense.Amount}, " +
                     $"Description: {expense.Description}, Category: {expense.Category.Name}");
