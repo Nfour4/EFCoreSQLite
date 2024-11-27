@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ExpensesTrackerLibrary.Contexts;
 using ExpensesTrackerLibrary.Models;
+using System.Collections.ObjectModel;
 
 namespace ExpensesTrackerLibrary.Repositories
 {
@@ -30,6 +31,11 @@ namespace ExpensesTrackerLibrary.Repositories
         public IEnumerable<Category> GetAllCategories()
         {
             return _context.Categories.ToList();
+        }
+        public ObservableCollection<Category> GetAllCategoriesObservable()
+        {
+            _context.Categories.Load();
+            return _context.Categories.Local.ToObservableCollection();
         }
         public void AddExpense(Expense expense) 
         {
