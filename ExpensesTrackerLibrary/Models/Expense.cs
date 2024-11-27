@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SQL_Lesson_6__EF_Core___SQLite_.Models
+﻿namespace ExpensesTrackerLibrary.Models
 {
     public class Expense
     {

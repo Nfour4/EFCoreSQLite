@@ -1,6 +1,6 @@
-﻿using SQL_Lesson_6__EF_Core___SQLite_.Contexts;
-using SQL_Lesson_6__EF_Core___SQLite_.Models;
-using SQL_Lesson_6__EF_Core___SQLite_.Repositories;
+﻿using ExpensesTrackerLibrary.Contexts;
+using ExpensesTrackerLibrary.Models;
+using ExpensesTrackerLibrary.Repositories;
 
 public class Program
 {

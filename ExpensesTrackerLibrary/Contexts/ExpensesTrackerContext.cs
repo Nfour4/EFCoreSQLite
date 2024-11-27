@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SQL_Lesson_6__EF_Core___SQLite_.Models;
+using ExpensesTrackerLibrary.Models;
 
-namespace SQL_Lesson_6__EF_Core___SQLite_.Contexts
+namespace ExpensesTrackerLibrary.Contexts
 {
     public class ExpensesTrackerContext : DbContext
     {
