@@ -7,6 +7,29 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Categories">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        
+                    </StackPanel>
+                    <DataGrid x:Name="dataGridCategories"
+                              AutoGenerateColumns="False"
+                              Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}"
+                                                Header="Id"
+                                                IsReadOnly="True"/>
+                            <DataGridTextColumn Binding="{Binding Name}"
+                                                Header="Name"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
