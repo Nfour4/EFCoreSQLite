@@ -60,6 +60,11 @@ namespace ExpensesTrackerLibrary.Repositories
         {
             return _context.Expenses.ToList();
         }
+        public ObservableCollection<Expense> GetAllExpensesObservable()
+        {
+            _context.Expenses.Include(e=>e.Category).Load();
+            return _context.Expenses.Local.ToObservableCollection();
+        }
         public ICollection<Expense> GetExpensesByCategoryName(string categoryName)
         {
             return _context.Expenses.Where(e=>e.Category.Name.Contains(categoryName)).ToList();

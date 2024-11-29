@@ -13,6 +13,7 @@ using ExpensesTrackerLibrary.Models;
 using ExpensesTrackerLibrary.Repositories;
 using System.Collections.Generic;
 
+
 namespace WPF_ExpensesTracker
 {
     public partial class MainWindow : Window
@@ -28,9 +29,36 @@ namespace WPF_ExpensesTracker
             _repository = new ExpenseRepository(_context);
 
             dataGridCategories.ItemsSource = _repository.GetAllCategoriesObservable();
+            dataGridExpenses.ItemsSource = _repository.GetAllExpensesObservable();
+
+            comboBoxExpenseCategory.ItemsSource = _repository.GetAllCategoriesObservable();
 
             buttonAddCategory.Click += ButtonAddCategory_Click;
             buttonDeleteCategories.Click += ButtonDeleteCategories_Click;
+            buttonAddExpense.Click += ButtonAddExpense_Click;
+        }
+
+        private void ButtonAddExpense_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DateTime? dateTime = datePickerExpenseDate.SelectedDate;
+                Category category = comboBoxExpenseCategory.SelectedItem as Category;
+                decimal amount = Convert.ToDecimal(textBoxExpenseAmount.Text);
+                string description = textBoxExpenseDescription.Text;
+
+                _repository.AddExpense(new Expense()
+                {
+                    Date = dateTime != null ? (DateTime) dateTime : DateTime.Now,
+                    Category = category,
+                    Amount = amount,
+                    Description = description
+                });
+            }
+            catch (Exception ex) 
+            {
+                ShowError(ex.Message);
+            }
         }
 
         private void ButtonDeleteCategories_Click(object sender, RoutedEventArgs e)
