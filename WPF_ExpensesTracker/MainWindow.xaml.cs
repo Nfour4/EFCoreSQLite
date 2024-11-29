@@ -13,7 +13,6 @@ using ExpensesTrackerLibrary.Models;
 using ExpensesTrackerLibrary.Repositories;
 using System.Collections.Generic;
 
-
 namespace WPF_ExpensesTracker
 {
     public partial class MainWindow : Window
