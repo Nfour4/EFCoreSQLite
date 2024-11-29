@@ -14,8 +14,18 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <StackPanel>
-                        
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <TextBox x:Name="textBoxCategoryName"
+                                 Margin="5"
+                                 Width="150"/>
+                        <Button x:Name="buttonAddCategory"
+                                Margin="5"
+                                Content="Add Category"/>
+                        <Button x:Name="buttonDeleteCategories"
+                                Margin="5"
+                                Content="Delete Selected Categories"/>
+
                     </StackPanel>
                     <DataGrid x:Name="dataGridCategories"
                               AutoGenerateColumns="False"
