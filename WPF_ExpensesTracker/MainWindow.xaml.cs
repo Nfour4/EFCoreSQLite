@@ -35,6 +35,24 @@ namespace WPF_ExpensesTracker
             buttonAddCategory.Click += ButtonAddCategory_Click;
             buttonDeleteCategories.Click += ButtonDeleteCategories_Click;
             buttonAddExpense.Click += ButtonAddExpense_Click;
+            buttonDeleteExpenses.Click += ButtonDeleteExpenses_Click;
+        }
+
+        private void ButtonDeleteExpenses_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridExpenses.SelectedItems != null)
+            {
+                var expensesToDelete = new List<Expense>();
+                foreach (var item in dataGridExpenses.SelectedItems)
+                {
+                    expensesToDelete.Add(item as Expense);
+                }
+                _repository.DeleteExpenses(expensesToDelete);
+            }
+            else
+            {
+                ShowError("No Categories Selected");
+            }
         }
 
         private void ButtonAddExpense_Click(object sender, RoutedEventArgs e)

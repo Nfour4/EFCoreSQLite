@@ -102,6 +102,12 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Button x:Name="buttonDeleteExpenses"
+                                Margin="5"
+                                Content="Delete Selected Expenses"/>
+                    </StackPanel>
                     <DataGrid x:Name="dataGridExpenses"
                               Margin="5"
                               Width="600"
