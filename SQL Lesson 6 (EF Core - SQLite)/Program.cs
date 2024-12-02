@@ -27,7 +27,7 @@ public class Program
             //    Category = categories.Skip(1).FirstOrDefault()
             //});
 
-            foreach(var expense in repo.GetAllExpenses())
+            foreach (var expense in repo.GetAllExpenses())
             {
                 Console.WriteLine($"Date: {expense.Date}, Amount: {expense.Amount}, " +
                     $"Description: {expense.Description}, Category: {expense.Category.Name}");

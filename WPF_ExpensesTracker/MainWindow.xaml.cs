@@ -29,6 +29,7 @@ namespace WPF_ExpensesTracker
 
             dataGridCategories.ItemsSource = _repository.GetAllCategoriesObservable();
             dataGridExpenses.ItemsSource = _repository.GetAllExpensesObservable();
+            dataGridDayOfWeek.ItemsSource = _repository.GetAverageExpensesByDayOfWeek();
 
             comboBoxExpenseCategory.ItemsSource = _repository.GetAllCategoriesObservable();
 
