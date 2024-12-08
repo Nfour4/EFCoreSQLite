@@ -157,6 +157,44 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+            <TabItem Header="Sum By Category Name">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="dataGridSumByCategoryName"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="CategoryName"
+                                                Binding="{Binding Category}"/>
+                            <DataGridTextColumn Header="Sum"
+                                                Binding="{Binding Sum}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sum By Day And Year">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="dataGridSumByDayAndYear"
+                              Grid.Row="1"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Day"
+                                                Binding="{Binding SDay}"/>
+                            <DataGridTextColumn Header="Year"
+                                                Binding="{Binding SYear}"/>
+                            <DataGridTextColumn Header="Sum"
+                                                Binding="{Binding Sum}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

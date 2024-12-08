@@ -96,5 +96,19 @@ namespace ExpensesTrackerLibrary.Repositories
                 .Select(g=> new AmountByDayOfWeek(g.Key,g.Average(e=>(double)e.Amount)))
                 .ToList();
         }
+        public IEnumerable<SumByCategoryName> GetSumByCategoryName()
+        {
+            return _context.Expenses
+                .GroupBy(e => e.Category.Name)
+                .Select(g => new SumByCategoryName(g.Key, g.Sum(e => (double)e.Amount)))
+                .ToList();
+        }
+        public IEnumerable<SumByDayAndYear> GetSumByDayAndYear()
+        {
+            return _context.Expenses
+                .GroupBy(e => e.Date.DayOfWeek)
+                .Select(g => new SumByDayAndYear(g.Key,DateTime.Now.Year,g.Sum(e => (double)e.Amount)))
+                .ToList();
+        }
     }
 }
